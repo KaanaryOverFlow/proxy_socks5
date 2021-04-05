@@ -21,7 +21,7 @@ class Proxy:
         con.sendall(bytes([default_version, 2]))
 
         if not self.onayla(con):
-            print("authantication error")
+            print("authentication error")
             return
         version, komut, blabla, adresturu = con.recv(4)
         if adresturu == 1:
