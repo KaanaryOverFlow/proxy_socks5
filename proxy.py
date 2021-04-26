@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import socket
 import threading
 import select
@@ -56,11 +57,13 @@ class Proxy:
             r,w,e = select.select([con, bag], [], [])
             if con in r:
                 veri = con.recv(4096)
+                print(f"[ --> ] {veri}")
                 if bag.send(veri) <= 0:
                     break
 
             if bag in r:
                 veri = bag.recv(4096)
+                print(f"[ <-- ] {veri}")
                 if con.send(veri) <= 0:
                     break
 
